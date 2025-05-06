@@ -29,14 +29,14 @@ describe("Teste da criação, registro e login", () => {
   })
 
   it("Teste de login com falha", () => {
-    let infos = criarUser() // cria o usuário
-    fazerLogin(infos) // faz login
-    cy.get('h1.ng-binding').should("contain.text", infos[0]) // verifica se o login foi feito na conta certa
-    cy.get('.ng-binding > a').click() // deleta o usuário
-    cy.get('.ng-binding').should("not.contain.text", infos[0]) // verifica se o usuário foi deletado
-    cy.get('.btn').click() // faz logout
-    fazerLogin(infos) // faz login novamente
-    cy.get('.ng-binding').should("contain.text", "Username or password is incorrect") // verifica se deu erro na hora do login
+    let infos = criarUser()
+    fazerLogin(infos)
+    cy.get('h1.ng-binding').should("contain.text", infos[0])
+    cy.get('.ng-binding > a').click()
+    cy.get('.ng-binding').should("not.contain.text", infos[0])
+    cy.get('.btn').click()
+    fazerLogin(infos)
+    cy.get('.ng-binding').should("contain.text", "Username or password is incorrect")
   })
 })
 
